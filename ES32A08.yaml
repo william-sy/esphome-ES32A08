@@ -24,8 +24,8 @@ web_server:
   version: 3
 
 packages: 
-  remote_package: https://github.com/william-sy/esphome-ES32A08
-    url:
+  remote_package: 
+    url: https://github.com/william-sy/esphome-ES32A08
     ref: main
     refresh: 0s
     files: [

@@ -1,0 +1,7 @@
+# Status LED
+light: 
+  - platform: status_led
+    id: board_led
+    name: "Board LED"
+    pin: GPIO15
+    internal: true

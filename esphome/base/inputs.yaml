@@ -1,0 +1,120 @@
+# Input has 1 of these:
+sn74hc165:
+  - id: 'input_hub'
+    data_pin: GPIO5
+    clock_pin: GPIO17
+    load_pin: GPIO16
+
+binary_sensor:
+  # Opto Inputs 1-8
+  - platform: gpio
+    id: input_1
+    name: "Input 1"
+    pin: 
+      sn74hc165: 'input_hub'
+      number: 0
+      inverted: true
+  - platform: gpio
+    id: input_2
+    name: "Input 2"
+    pin: 
+      sn74hc165: 'input_hub'
+      number: 1
+      inverted: true
+  - platform: gpio
+    id: input_3
+    name: "Input 3"
+    pin: 
+      sn74hc165: 'input_hub'
+      number: 2
+      inverted: true
+  - platform: gpio
+    id: input_4
+    name: "Input 4"
+    pin: 
+      sn74hc165: 'input_hub'
+      number: 3
+      inverted: true
+  - platform: gpio
+    id: input_5
+    name: "Input 5"
+    pin: 
+      sn74hc165: 'input_hub'
+      number: 4
+      inverted: true
+  - platform: gpio
+    id: input_6
+    name: "Input 6"
+    pin: 
+      sn74hc165: 'input_hub'
+      number: 5
+      inverted: true
+  - platform: gpio
+    id: input_7
+    name: "Input 7"
+    pin: 
+      sn74hc165: 'input_hub'
+      number: 6
+      inverted: true
+  - platform: gpio
+    id: input_8
+    name: "Input 8"
+    pin: 
+      sn74hc165: 'input_hub'
+      number: 7
+      inverted: true
+
+sensor:
+  # Voltage input
+  # As you are probably using wifi, you cant use V3 (GPIO25) and V4 (GPIO26)
+  - platform: adc
+    id: voltage_1
+    name: "Voltage 1"
+    update_interval: 30s
+    attenuation: auto
+    pin:
+      number: GPIO32
+      mode:
+        input: true
+    filters:
+      # Converting what ESP sees to real value based on resistors that are used on the board
+      - lambda: return x / 10.0 * (10.0 + 43.0);
+      # Rounding to 2 decimals but feel free to change this if you need more/less pressicion
+      - round: 2
+      - delta: 0.01
+  - platform: adc
+    id: voltage_2
+    name: "Voltage 2"
+    update_interval: 30s
+    attenuation: auto
+    pin:
+      number: GPIO33
+      mode:
+        input: true
+    filters:
+      # Converting what ESP sees to real value based on resistors that are used on the board
+      - lambda: return x / 10.0 * (10.0 + 43.0);
+      # Rounding to 2 decimals but feel free to change this if you need more/less pressicion
+      - round: 2
+      - delta: 0.01
+  # Current sensors, these need testing:
+  - platform: adc
+    id: current_1
+    pin: GPIO36
+    name: "Current 1 (0-20ma)"
+    update_interval: 60s
+  - platform: adc
+    id: current_2
+    pin: GPIO39
+    name: "Current 2 (0-20ma)"
+    update_interval: 60s
+  - platform: adc
+    id: current_3
+    pin: GPIO34
+    name: "Current 3 (0-20ma)"
+    update_interval: 60s
+  - platform: adc
+    id: current_4
+    pin: GPIO35
+    name: "Current 4 (0-20ma)"
+    update_interval: 60s

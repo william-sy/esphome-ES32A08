@@ -1,0 +1,37 @@
+esphome:
+  name: ES32A08
+  friendly_name: ES32A08
+  comment: ES32A08
+
+esp32:
+  board: nodemcu-32s
+logger:
+api:
+  encryption:
+     key: !secret encryption_key
+ota:
+  - platform: esphome
+    password: !secret ota_password
+wifi:
+  ssid: !secret lot_wifi_ssid
+  password: !secret lot_wifi_password
+  ap:
+    ssid: "ES32A08"
+    password: "rVzthqQyudee"
+captive_portal:
+web_server:
+  port: 80
+  version: 3
+
+packages: 
+  remote_package: https://github.com/william-sy/esphome-ES32A08
+    url:
+    ref: main
+    refresh: 0s
+    files: [
+      esphome/base/buttons.yaml,
+      esphome/base/display.yaml,
+      esphome/base/inputs.yaml,
+      esphome/base/light.yaml,
+      esphome/base/outputs.yaml
+    ]

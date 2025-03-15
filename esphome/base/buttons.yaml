@@ -1,0 +1,42 @@
+binary_sensor:
+  # Buttons 1-4
+  - platform: gpio
+    id: key_1
+    name: "Key 1"
+    internal: false
+    pin: 
+      number: GPIO18
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+  - platform: gpio
+    id: key_2
+    name: "Key 2"
+    internal: false
+    pin: 
+      number: GPIO19
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+  - platform: gpio
+    id: key_3
+    name: "Key 3"
+    internal: false
+    pin: 
+      number: GPIO21
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+  - platform: gpio
+    id: key_4
+    name: "Key 4"
+    internal: false
+    pin: 
+      number: GPIO23
+      inverted: true
+      mode:
+        input: true
+        pullup: true

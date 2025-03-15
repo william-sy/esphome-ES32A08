@@ -72,11 +72,11 @@ output:
       number: 11
       inverted: True
 
-text_sensor:
-  - platform: homeassistant
-    name: "Text from Home Assistant"
-    id: home_assistant_text
-    entity_id: input_text.test
+#text_sensor:
+#  - platform: homeassistant
+#    name: "Text from Home Assistant"
+#    id: home_assistant_text
+#    entity_id: input_text.test
 interval:
   - interval: 25ms
     then:
@@ -86,7 +86,7 @@ script:
   - id: display_text
     then:
       - lambda: |-
-          std::string text = id(home_assistant_text).state;
+          std::string text = "test"; //id(home_assistant_text).state;
 
           // Pad with spaces if the text is shorter than 4 characters
           while (text.length() < 4) {

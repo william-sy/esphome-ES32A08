@@ -1,0 +1,24 @@
+uart:
+  id:          uart_modbus
+  tx_pin:      GPIO1
+  rx_pin:      GPIO3
+  #baud_rate:   19200
+  #data_bits:   8
+  #stop_bits:   1     # Make this 2 if Parity is none
+  #parity:      EVEN
+  debug:
+    direction: BOTH
+
+modbus:
+  id: modbus
+  uart_id: uart_modbus
+  #send_wait_time: 2000ms
+
+# Example usage:
+#modbus_controller:
+#  - id: hru
+#    address:          0x48 # resolves to as per manual 72
+#    modbus_id:        modbus
+#    setup_priority:   -10
+#    update_interval:  30s
+#    command_throttle: 50ms
